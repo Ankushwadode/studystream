@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>StudyStream |Student Dashboard</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon.png}">
+    <!-- Datatable -->
+    <link th:href="@{/vendor/datatables/css/jquery.dataTables.min.css}" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a th:href="@{/studentdashboard}" class="brand-logo">
+                Student Dashboard
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <!-- <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div> -->
+                        </div>
+
+                          <th:block th:if="${session.sessionStudent}">
+							<h2 th:text="${session.sessionStudent}"></h2>
+						</th:block>
+                        <ul class="navbar-nav header-right">
+                            
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a th:href="@{/sprofile}" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                   
+                                    <a th:href="@{/logout-student}" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                   
+                    <!--  <li class="nav-label">Main Menu</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Course</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./app-profile.html">Create New</a></li>
+                            
+                            <li><a href="./app-calender.html">All Course</a></li>
+                            <li><a href="./app-calender.html">Publish Course</a></li>
+                            <li><a href="./app-calender.html">Complains</a></li>
+                        </ul>
+                    </li> 
+                    
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-chart-bar-33"></i><span class="nav-text">Live Session</span></a>
+                        <ul aria-expanded="false">
+                            <li><a th:href="@{/liveSession}">Create Live Session</a></li>
+                            <li><a th:href="@{/all_live_sessions}">All Sessions</a></li>
+                            
+                        </ul>
+                    </li> -->
+
+
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-chart-bar-33"></i><span class="nav-text">Student</span></a>
+                        <ul aria-expanded="false">
+                            <li><a th:href="@{/live_session_student}">All Live Sessions</a></li>
+                            <li><a th:href="@{/upcoming_live_session}">Upcoming Sessions</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                    
+					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Complains</span></a>
+                        <ul aria-expanded="false">
+                            <li><a th:href="@{/StudentComplainsPage1}">Complains</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Components</li>
+                    <li><a  th:href="@{/sprofile}"aria-expanded="false"><i
+                                class="icon icon-world-2"></i><span class="nav-text">Profile</span></a>
+                       
+                    </li>
+                    <li><a  th:href="@{/logout-student}" aria-expanded="false"><i
+                                class="icon icon-world-2"></i><span class="nav-text">Logout</span></a>
+					</li>
+                
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">    
+                  
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <th:block th:if="${session.sessionStudent}">
+							<h6 th:text="${session.sessionStudent}"></h6>
+						</th:block>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Datatable</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- row -->
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">All Sessions</h4>
+                            </div>
+                            <div class="card-body" th:switch="${liveSessionList}">
+                                <h2 th:case="null">No users yet!</h2>
+                                <div class="table-responsive" th:case="*">
+                                    <table id="example" class="display" style="min-width: 845px">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Topic Name</th>
+                                                <th>Subject</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Link</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+	                                        <tr th:each="user : ${liveSessionList}">
+							                    <td th:text="${user.id}"></td>
+							                    <td th:text="${user.topic_name}"></td>
+							                    <td th:text="${user.subject}"></td>
+							                    <td th:text="${user.date}"></td>
+							                    <td th:text="${user.time}"></td>
+							                    <td th:text="${user.link}"></td>
+							                    <td>
+							                      <a th:href="${user.link}" class="btn btn-square btn-primary">Join</a>
+							                    	
+                                               </td>
+							                </tr>
+										</tbody>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Group8</a> 2023</p>            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+        
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script th:src="@{/vendor/global/global.min.js}"></script>
+    <script th:src="@{/js/quixnav-init.js}"></script>
+    <script th:src="@{/js/custom.min.js}"></script>
+    
+
+
+    <!-- Datatable -->
+    <script th:src="@{/vendor/datatables/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/plugins-init/datatables.init.js}"></script>
+
+</body>
+
+</html>
