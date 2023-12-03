@@ -1,5 +1,7 @@
 # STUDY STREAM – JAVA SPRING BOOT BASED E-LEARNING WEBSITE
 
+![Alt Text](https://github.com/RajlaxmiMeshram/studystream/blob/main/img/index.jpg)
+
 An E-Learning platform – “Study Stream” integrated along with live session which will help the students to provide online education to develop and learn new skills at home and make interactions between students and tutors easy and more convenient.
 
 <ul> <li>The main objective of this project is to provide knowledge for development and improvement of skills for the students with the help of the courses provided in the application.</li>
